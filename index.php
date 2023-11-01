@@ -42,6 +42,13 @@
 
     $filtered_hotels = [];
 
+    if (isset($_POST['parking'])) {
+        foreach ($hotels as $hotel){
+        if ($hotel['parking']) {
+            $filtered_hotels[] = $hotel;
+            }
+        }
+    }
 
 ?>
 
@@ -59,7 +66,7 @@
 <body>
 
     <h1>Hotels</h1>
-    <form action="index.php">
+    <form action="index.php" method="POST">
         <input type="checkbox" name="parking" id="parking">
         <label for="parking">
             Solo hotel con parcheggio
@@ -77,7 +84,7 @@
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($hotels as $hotel): ?>
+            <?php foreach ($filtered_hotels as $hotel): ?>
             <tr>
             <th scope="row"><?php echo $hotel['name'] ?></th>
             <td><?php echo $hotel['description'] ?></td>

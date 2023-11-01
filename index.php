@@ -40,6 +40,9 @@
 
     ];
 
+    $filtered_hotels = [];
+
+
 ?>
 
 
@@ -54,6 +57,15 @@
     <title>Hotel</title>
 </head>
 <body>
+
+    <h1>Hotels</h1>
+    <form action="index.php">
+        <input type="checkbox" name="parking" id="parking">
+        <label for="parking">
+            Solo hotel con parcheggio
+        </label>
+        <button class="btn btn-success" type="submit">INVIA</button>
+    </form>
     <table class="table">
         <thead>
             <tr>

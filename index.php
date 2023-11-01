@@ -41,11 +41,18 @@
     ];
 
     $filtered_hotels = [];
+    $vote = isset($_POST['vote']) ? $_POST['vote'] : '0';
 
     if (isset($_POST['parking'])) {
         foreach ($hotels as $hotel){
-        if ($hotel['parking']) {
-            $filtered_hotels[] = $hotel;
+            if ($hotel['parking']) {
+                $filtered_hotels[] = $hotel;
+            }
+        }
+    } else {
+        foreach ($hotels as $hotel){
+            if ($hotel['vote'] >= $vote) {
+                $filtered_hotels[] = $hotel;
             }
         }
     }
@@ -71,6 +78,18 @@
         <label for="parking">
             Solo hotel con parcheggio
         </label>
+
+        <input type="radio" name="vote" id="vote1">
+        <label for="vote1">1</label>
+        <input type="radio" name="vote" id="vote2">
+        <label for="vote2">2</label>
+        <input type="radio" name="vote" id="vote3">
+        <label for="vote3">3</label>
+        <input type="radio" name="vote" id="vote4">
+        <label for="vote4">4</label>
+        <input type="radio" name="vote" id="vote5">
+        <label for="vote5">5</label>
+        
         <button class="btn btn-success" type="submit">INVIA</button>
     </form>
     <table class="table">
